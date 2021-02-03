@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import DUMMY_TASKS from "../data/dummy-tasks.json";
 
-import "../css/TasksDetailsScreen.css";
+import "../css/TaskScreen.css";
 
 // Displays close "details" view of a user's individual Task from their list;
 const TaskDetailsScreen = (props) => {
@@ -33,10 +33,11 @@ const TaskDetailsScreen = (props) => {
       ) : (
         <div>
           <div className="task-Header">Task: {task.title}</div>
-            <div className="divider" />
+          <div className="divider" />
           <ol>
             <div className="task-description">
-              Description: {task.taskDescription}<br />
+              Description: {task.taskDescription}
+              <br />
               Date created: {task.dateCreated}
             </div>
             Done?
@@ -47,7 +48,7 @@ const TaskDetailsScreen = (props) => {
               checked={task.completed ? "checked" : ""}
               onChange={completedHandler}
             />
-        </ol>
+          </ol>
         </div>
       )}
     </React.Fragment>

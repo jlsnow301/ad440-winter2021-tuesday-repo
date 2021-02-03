@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import Button from "../uiElements/Button";
-import DUMMY_TASKS from "../data/dummy-tasks.json";
+import DUMMY_TESTS from "../data/dummy-tests.json";
 import { useAxiosClient } from "../hooks/axios-hook";
 
-import "../css/TaskScreen.css";
+import "../css/TestListScreen.css";
 
-const TasksScreen = (props) => {
-  const [tasksList, setTasksList] = useState([]);
+const ArtilleryTests = (props) => {
+  const [tests, setTestsList] = useState([]);
   const { sendRequest } = useAxiosClient();
-  const params = useParams();
 
   useEffect(() => {
-    setTasksList(DUMMY_TASKS); // TESTING ONLY
+    setTestsList(DUMMY_TESTS); // TESTING ONLY
     // Just need the URL put in place, uncomment this
     // const fetchUsers = async () => {
     //   try {
@@ -32,20 +30,22 @@ const TasksScreen = (props) => {
   }, [sendRequest]);
 
   return (
-    <div className="task-List">
-      {tasksList.map((task) => {
-        return (
-          <Button
-            className="task-Button"
-            key={task.taskId}
-            to={`/users/${params.userId}/tasks/${task.taskId}`}>
-            {task.title}<br />
-            {task.dateCreated}
-          </Button>
-        );
-      })}
-    </div>
+    <React.Fragment>
+      Artillery Tests Taken:
+      <div className="divider" />
+      <div className="tests-List">
+        {tests.map((test) => {
+          return (
+            <Button key={test.id} to={`artillery/${test.id}`}>
+              ID: {test.id}
+              <br />
+              {test.date}
+            </Button>
+          );
+        })}
+      </div>
+    </React.Fragment>
   );
 };
 
-export default TasksScreen;
+export default ArtilleryTests;
