@@ -20,10 +20,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          git remote add upstream https://github.com/North-Seattle-College/ad440-winter2021-tuesday-repo
-          git fetch upstream
-          git checkout development
-          git merge upstream/development --allow-unrelated-histories
+      - name: Set upstream
+        run: git remote add upstream https://github.com/North-Seattle-College/ad440-winter2021-tuesday-repo.git
+      - name: Set email
+        run: git config --local user.email "action@github.com"
+      - name: Set username
+        run: git config --local user.name "GitHub Action"
+      - name: Fetch upstream
+        run: git fetch upstream
+      - name: Merge upstream
+        run: git merge upstream/development --allow-unrelated-histories
+      - name: Push changes 
+        run: git push 
