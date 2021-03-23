@@ -26,4 +26,4 @@ jobs:
           git remote add upstream https://github.com/North-Seattle-College/ad440-winter2021-tuesday-repo
           git fetch upstream
           git checkout development
-          git merge upstream/development
+          git merge upstream/development --allow-unrelated-histories
